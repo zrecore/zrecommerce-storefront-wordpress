@@ -3,9 +3,11 @@
 @import "neat/neat";
 @import "base/base";
 
+
 body {
     background: #fff;
     margin: 0;
+
 }
 
 div.main-container {
@@ -100,4 +102,6 @@ div.main-container {
 }
 @import "navigation";
 @import "hero";
+@import "comment";
+@import "flex-boxes";
 @import "footer";

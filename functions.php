@@ -26,5 +26,6 @@
 
  add_action( 'init', 'register_menus' );
  add_action( 'wp_enqueue_scripts', 'register_js');
+ add_theme_support( 'html5', array( 'search-form' ) );
 
 ?>

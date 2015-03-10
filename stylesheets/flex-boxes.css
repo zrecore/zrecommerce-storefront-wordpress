@@ -1,28 +1,28 @@
 /*
-Error: Undefined variable: "$gutter".
-        on line 31 of stylesheets/sass/footer.scss
+Error: Undefined mixin 'clearfix'.
+        on line 30 of stylesheets/sass/flex-boxes.scss, in `clearfix'
+        from line 30 of stylesheets/sass/flex-boxes.scss
 
-26:   $footer-color: white;
-27:   $footer-link-color: transparentize($footer-color, 0.6);
-28:   $footer-disclaimer-color: transparentize($footer-color, 0.6);
+25:     #92B1E3, 
+26:     #E3D743,
+27:     #CCC,
+28:     #F6C05C;
 29: 
-30:   background: $footer-background;
-31:   padding: ($base-spacing * 2) $gutter;
-32:   width: 100%;
-33: 
-34:   .footer-logo {
-35:     margin-bottom: 2em;
-36:     text-align: center;
+30:     @include clearfix;
+31:     @include display(flex);
+32:     @include justify-content(center);
+33:     @include align-items(stretch);
+34:     @include flex-wrap(wrap);
+35:     clear: both;
 
 Backtrace:
-stylesheets/sass/footer.scss:31
-/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/variable.rb:49:in `_perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/node.rb:50:in `perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/list_literal.rb:63:in `block in _perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/list_literal.rb:63:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/list_literal.rb:63:in `_perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/tree/node.rb:50:in `perform'
-/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:394:in `visit_prop'
+stylesheets/sass/flex-boxes.scss:30:in `clearfix'
+stylesheets/sass/flex-boxes.scss:30
+/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:98:in `block in with_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:98:in `with_mixin'
+/var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
 /var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
 /var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
 /var/lib/gems/1.9.1/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
@@ -71,4 +71,4 @@ stylesheets/sass/footer.scss:31
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$gutter\".\A         on line 31 of stylesheets/sass/footer.scss\A \A 26:   $footer-color: white;\A 27:   $footer-link-color: transparentize($footer-color, 0.6);\A 28:   $footer-disclaimer-color: transparentize($footer-color, 0.6);\A 29: \A 30:   background: $footer-background;\A 31:   padding: ($base-spacing * 2) $gutter;\A 32:   width: 100%;\A 33: \A 34:   .footer-logo {\A 35:     margin-bottom: 2em;\A 36:     text-align: center;"; }
+  content: "Error: Undefined mixin 'clearfix'.\A         on line 30 of stylesheets/sass/flex-boxes.scss, in `clearfix'\A         from line 30 of stylesheets/sass/flex-boxes.scss\A \A 25:     #92B1E3, \A 26:     #E3D743,\A 27:     #CCC,\A 28:     #F6C05C;\A 29: \A 30:     @include clearfix;\A 31:     @include display(flex);\A 32:     @include justify-content(center);\A 33:     @include align-items(stretch);\A 34:     @include flex-wrap(wrap);\A 35:     clear: both;"; }
