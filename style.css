@@ -1,0 +1,15 @@
+/*
+Theme Name: zrecommerce-storefront-wordpress
+Theme URI: http://github.com/zrecommerce/zrecommerce-storefront-wordpress
+Author: @ZRECommerce
+Author URI: http://zrecommerce.com/
+Description:  This is the default storefront theme for RESTful "zrecore-js" based shops.
+Version: 1.0
+License: MIT License
+License URI: http://opensource.org/licenses/MIT
+Tags: ecommerce, restful, zrecore, shop, paypal, bitpay, wordpress ecommerce
+Text Domain: zrecommerce
+
+This theme, is licensed under the MIT License.
+*/
+@import "stylesheets/main.css";
