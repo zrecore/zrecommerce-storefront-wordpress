@@ -1,4 +1,4 @@
-//$max-width: 100%;
+$max-width: 100%;
 @import "bourbon/bourbon";
 @import "neat/neat";
 @import "base/base";
@@ -18,8 +18,8 @@ div.main-container {
     }
 
     div.body-container {
-        @include span-columns(12);
-
+        @include span-columns(8);
+        @include shift(2);
         .bullets {
   
 		///////////////////////////////////////////////////////////////////////////////////
@@ -100,6 +100,8 @@ div.main-container {
     }
 
 }
+@import "recentPosts";
+
 @import "navigation";
 @import "hero";
 @import "comment";

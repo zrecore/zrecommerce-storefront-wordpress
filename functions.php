@@ -9,7 +9,10 @@
  }
  function register_menus() {
  	register_nav_menus(array(
- 		'navigation-menu' => 'Navigation'
+ 		'navigation-menu'    => 'Navigation',
+ 		'content-navigation' => 'Content',
+ 		'social-navigation'  => 'Social',
+ 		'legal-navigation'   => 'Legal'
  	));
 
  	add_filter( 'nav_menu_css_class', 'process_nav_menu_item_class', 10, 2 );

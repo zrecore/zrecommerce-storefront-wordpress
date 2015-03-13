@@ -1,6 +1,6 @@
 <header class="navigation" role="banner">
   <div class="navigation-wrapper">
-    <a href="javascript:void(0)" class="logo">
+    <a href="/" class="logo">
       <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
     </a>
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
@@ -8,7 +8,6 @@
       <?php 
         $nav_args = array(
             'theme_location' => 'navigation-menu',
-            'menu'          => 'Navigation Menu',
             'container'     => '',
             'items_wrap'    => '<ul id="js-centered-navigation-menu" class="centered-navigation-menu show">%3$s</ul>'
         );
@@ -23,7 +22,7 @@
           </button>
         </form>
       </div>
-      <a href="javascript:void(0)" class="sign-up">Sign Up</a>
+      
     </div>
   </div>
 </header>

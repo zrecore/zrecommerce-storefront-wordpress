@@ -22,6 +22,7 @@ $search = new WP_Query($search_query);
 // Get search results
 $total_results = $wp_query->found_posts;
 $searchResults = get_pages();
+$searchPosts = get_posts();
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -36,7 +37,7 @@ $searchResults = get_pages();
 			    <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image"></a>
 					<div class="hero-copy">
 						<h1><?php printf( __( 'Search Results for: %s' ), '<span>' . get_search_query() . '</span>'); ?></h1>
-						<p>A quick search through our blog has yielded the following.</p>	
+						<p>A quick search through our blog has yielded <?php echo $total_results ?> result(s).</p>	
 					</div>
 				</div>
 			</div>
@@ -44,38 +45,19 @@ $searchResults = get_pages();
 				<div class="flex-boxes">
 
 				  <?php 
-				  	// $searchResults = 
+				  	
+				    if (have_posts()):
+				    	 /* Start the Loop */ 
+		                 while ( have_posts() ) : the_post(); ?>
+
+		                    <?php get_template_part( 'search', 'content' ); ?>
+
+		                <?php 
+		                endwhile;
+				    else:
 				  ?>
-				  <a href="javascript:void(0)" class="flex-box flex-box-big">
-				    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png" alt="">
-				    <h1 class="flex-title">A Wide Flex Box Item</h1>
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad nostrum, libero! Laborum distinctio necessitatibus voluptates eaque officiis, unde illo, earum voluptatum rerum, reiciendis ipsa ex dolorem a dicta, maxime aliquam.</p>
-				  </a>
-				  <a href="javascript:void(0)" class="flex-box">
-				    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1_dark.png" alt="">
-				    <h1 class="flex-title">Flex Box Item</h1>
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum molestiae fugiat tenetur fugit atque dignissimos, fugiat natus vitae.</p>
-				  </a>
-				  <a href="javascript:void(0)" class="flex-box">
-				    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png" alt="">
-				    <h1 class="flex-title">A Flex Box Item</h1>
-				    <p>Lorem adipisicing elit. Voluptas consectetur tempora quis nam, officia tenetur blanditiis in illo dolor?</p>
-				  </a>
-				  <a href="javascript:void(0)" class="flex-box flex-box-big">
-				    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png" alt="">
-				    <h1 class="flex-title">Another Wide Item</h1>
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae quis ipsum, officia, aperiam tenetur dolor molestiae voluptate perferendis dolorem vel ex, unde fugit blanditiis sapiente.</p>
-				  </a>
-				  <a href="javascript:void(0)" class="flex-box">
-				    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2_dark.png" alt="">
-				    <h1 class="flex-title">Flex Box Item</h1>
-				    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo obcaecati in provident illo.</p>
-				  </a>
-				  <a href="javascript:void(0)" class="flex-box">
-				    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3_dark.png" alt="">
-				    <h1 class="flex-title">Last Flex Box Item</h1>
-				    <p>Lorem ipsum dolor sit amet, elit. Rem, illum.</p>
-				  </a>
+				  <?php get_template_part( 'no-results', 'search' ); ?>
+				<?php endif; ?>
 				</div>
 			</div>
 		</div>
