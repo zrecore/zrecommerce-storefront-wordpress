@@ -21,7 +21,7 @@ if (!empty($featuredBullets)):
       <img src="<?php echo esc_url(array_shift($pageMeta['bullet_icon_url'])) ?>" alt="">
     </div>
     <div class="bullet-content">
-      <h2><?php echo $page->post_title; ?></h2>
+      <h2><?php echo apply_filters('the_title', $page->post_title); ?></h2>
       <p><?php echo apply_filters('the_content', $page->post_content); ?></p>
     </div>
   </li>

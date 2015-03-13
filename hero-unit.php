@@ -1,0 +1,35 @@
+<?php 
+$mainArticle = get_posts(array(
+	'sort_order' => 'ASC',
+	'sort_column' => 'menu_order',
+	'meta_key' => 'is_main_article',
+	'meta_value' => '1'
+));
+
+if (!empty($mainArticle)):
+	foreach($mainArticle as $post): ?>
+<div class="hero">
+    <div class="hero-inner">
+        <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image"></a>
+        <div class="hero-copy">
+            <h1><?php echo apply_filters('the_title', $post->post_title); ?></h1>
+      		<p><?php echo apply_filters('the_excerpt', $post->post_excerpt); ?></p>   
+        </div>
+        <a class="button" href="<?php get_permalink( $post->ID ); ?>">More</a>
+    </div>
+</div>
+<?php 
+	endforeach; 
+else: ?>
+<div class="hero">
+    <div class="hero-inner">
+        <a href="" class="hero-logo"><img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image"></a>
+        <div class="hero-copy">
+            <h1>Short description of Product</h1>
+            <p>Please give a post the following custom field, and set to "1": is_main_article</p>    
+        </div>
+        <button>Learn More</button>
+    </div>
+</div>
+<?php 
+endif; ?>
