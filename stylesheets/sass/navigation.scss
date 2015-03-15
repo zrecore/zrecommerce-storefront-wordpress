@@ -1,15 +1,9 @@
-@import "bourbon/bourbon";
-@import "neat/neat";
-@import "base/base";
+@import "variables";
 
 header.navigation {
   
 ///////////////////////////////////////////////////////////////////////////////////
-  $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
-  $base-accent-color: #477DCA !default;
-  $dark-gray: #333 !default;
-  $large-screen: em(860) !default;
+  
   
   a {
     text-decoration: none;
@@ -18,7 +12,7 @@ header.navigation {
 //////////////////////////////////////////////////////////////////////////////////
 
   $navigation-padding: 1em;
-  $navigation-background: $dark-gray;
+  $navigation-background: transparentize(darken($base-accent-color, 15), 0.3);
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
   $navigation-height: 60px;
@@ -291,12 +285,13 @@ header.navigation {
     }
   }
 
-  .sign-up {
+  .sign-in, .register, .view-cart {
     @include button(flat, $base-accent-color);
     display: inline;
     float: right;
     font-size: 0.8em;
     margin-top: 1em;
+    margin-right: 1em;
     padding: 0.75em 1em;
     text-transform: uppercase;
   }
