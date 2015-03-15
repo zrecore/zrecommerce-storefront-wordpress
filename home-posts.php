@@ -2,7 +2,7 @@
  /**
   * Home - Post listing.
   */
- $recentPosts = wp_get_recent_posts(null, OBJECT);
+ $recentPosts = wp_get_recent_posts(array('numberposts' => 5), OBJECT);
 ?>
 <div class="recent-posts-container">
 <?php
