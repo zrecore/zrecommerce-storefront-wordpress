@@ -3,6 +3,23 @@
   * Functions include
   */
 
+ set_include_path(
+ 	get_include_path() . PATH_SEPARATOR . ( __DIR__ . '/library')
+ );
+
+ function getParam($key, $default = null) {
+ 	return isset($_REQUEST[$key]) ? $_REQUEST[$key] : $default;
+ }
+
+ require_once('Rest.php');
+ require_once('Model.php');
+ require_once('Model/Rest.php');
+
+ require_once('Model/Order.php');
+ require_once('Model/OrderCoupon.php');
+ require_once('Model/OrderItem.php');
+ require_once('Model/Item.php');
+
  // ---- System: Theme ----
  function process_nav_menu_item_class($classes, $item) {
 
@@ -30,135 +47,145 @@
  }
 
  // ---- Admin: Config ----
- function zrecommerce_admin_install() {
- 	// @todo STUB: Register settings.
+	if (is_admin()) {
+	 function zrecommerce_admin_install() {
+	 	// @todo STUB: Register settings.
 
- 	// API_URL
- 	register_setting(
- 		'zrecommerce_api', // Option group
- 		'url', // Option name
- 		'esc_url'
- 	);
- 	// API_USER
- 	register_setting(
- 		'zrecommerce_api', // Option group
- 		'user', // Option name
- 		'sanitize_text_field'
- 	);
- 	// API_KEY
- 	register_setting(
- 		'zrecommerce_api', // Option group
- 		'key', // Option name
- 		'sanitize_text_field'
- 	);
- 	// API_VERSION
- 	register_setting(
- 		'zrecommerce_api', // Option group
- 		'version', // Option name
- 		'sanitize_text_field'
- 	);
- }
+	 	// API_URL
+	 	register_setting(
+	 		'zrecommerce_api', // Option group
+	 		'zrecore_api_url', // Option name
+	 		'esc_url'
+	 	);
+	 	// API_USER
+	 	register_setting(
+	 		'zrecommerce_api', // Option group
+	 		'zrecore_api_user', // Option name
+	 		'sanitize_text_field'
+	 	);
+	 	// API_KEY
+	 	register_setting(
+	 		'zrecommerce_api', // Option group
+	 		'zrecore_api_key', // Option name
+	 		'sanitize_text_field'
+	 	);
+	 	// API_VERSION
+	 	register_setting(
+	 		'zrecommerce_api', // Option group
+	 		'zrecore_api_version', // Option name
+	 		'sanitize_text_field'
+	 	);
+	 }
 
- function zrecommerce_admin_uninstall() {
- 	// @todo STUB: Admin menu(s) tear-down
- }
+	 function zrecommerce_admin_uninstall() {
+	 	// @todo STUB: Admin menu(s) tear-down
+	 }
 
- // ---- Admin: Menus ----
- function zrecommerce_admin_menu() {
- 	// add_options_page(
- 	// 	'ZRECommerce Options',
- 	// 	''
- 	// );
+	 // ---- Admin: Menus ----
+	 function zrecommerce_admin_menu() {
+	 	add_menu_page(
+	 		'ZRECommerce Storefront Dashboard', // Page title
+	 		'Storefront', // Menu title
+	 		'read', // Capability
+	 		'zrecommerce', // Menu slug
+	 		'zrecommerce_admin_plugin', // Function
+	 		get_template_directory_uri() . '/assets/icons/logo-16x16.png', // Icon
+	 		3.99 // Load it near the top.
+	 	);
 
- 	add_menu_page(
- 		'ZRECommerce Storefront Dashboard', // Page title
- 		'Storefront', // Menu title
- 		'read', // Capability
- 		'zrecommerce', // Menu slug
- 		'zrecommerce_admin_plugin', // Function
- 		get_template_directory_uri() . '/assets/icons/logo-16x16.png', // Icon
- 		0.99 // Load it near the top.
- 	);
+	 	add_submenu_page(
+	 		'zrecommerce', // Parent slug
+	 		'ZRECommerce Storefront Dashboard - API Settings', // Page title
+	 		'API Settings', // Menu title
+	 		'read', // Capability
+	 		'zrecommerce-api-settings', // Menu slug
+	 		'zrecommerce_admin_plugin_api_settings' // Function
+	 	);
+
+	 	add_submenu_page(
+	 		'zrecommerce', // Parent slug
+	 		'ZRECommerce Storefront Dashboard - Orders', // Page title
+	 		'Orders', // Menu title
+	 		'read', // Capability
+	 		'zrecommerce-orders', // Menu slug
+	 		'zrecommerce_admin_plugin_orders' // Function
+	 	);
+
+	 	add_submenu_page(
+	 		'zrecommerce', // Parent slug
+	 		'ZRECommerce Storefront Dashboard - Products', // Page title
+	 		'Products', // Menu title
+	 		'read', // Capability
+	 		'zrecommerce-products', // Menu slug
+	 		'zrecommerce_admin_plugin_products' // Function
+	 	);
+
+	 	add_submenu_page(
+	 		'zrecommerce', // Parent slug
+	 		'ZRECommerce Storefront Dashboard - Coupons', // Page title
+	 		'Coupons', // Menu title
+	 		'read', // Capability
+	 		'zrecommerce-coupons', // Menu slug
+	 		'zrecommerce_admin_plugin_coupons' // Function
+	 	);
+
+	 	add_submenu_page(
+	 		'zrecommerce', // Parent slug
+	 		'ZRECommerce Storefront Dashboard - Services', // Page title
+	 		'Services', // Menu title
+	 		'read', // Capability
+	 		'zrecommerce-services', // Menu slug
+	 		'zrecommerce_admin_plugin_services' // Function
+	 	);
 
 
- 	add_submenu_page(
- 		'zrecommerce', // Parent slug
- 		'ZRECommerce Storefront Dashboard - Orders', // Page title
- 		'Orders', // Menu title
- 		'read', // Capability
- 		'zrecommerce-orders', // Menu slug
- 		'zrecommerce_admin_plugin_orders' // Function
- 	);
+	 	add_submenu_page(
+	 		'zrecommerce', // Parent slug
+	 		'ZRECommerce Storefront Dashboard - Subscriptions', // Page title
+	 		'Subscriptions', // Menu title
+	 		'read', // Capability
+	 		'zrecommerce-subscriptions', // Menu slug
+	 		'zrecommerce_admin_plugin_subscriptions' // Function
+	 	);
 
- 	add_submenu_page(
- 		'zrecommerce', // Parent slug
- 		'ZRECommerce Storefront Dashboard - Products', // Page title
- 		'Products', // Menu title
- 		'read', // Capability
- 		'zrecommerce-products', // Menu slug
- 		'zrecommerce_admin_plugin_products' // Function
- 	);
+	 }
 
- 	add_submenu_page(
- 		'zrecommerce', // Parent slug
- 		'ZRECommerce Storefront Dashboard - Coupons', // Page title
- 		'Coupons', // Menu title
- 		'read', // Capability
- 		'zrecommerce-coupons', // Menu slug
- 		'zrecommerce_admin_plugin_coupons' // Function
- 	);
+	 // ---- System: Plugins ----
+	 function zrecommerce_admin_plugin() {
+	 	// @todo STUB: Output the admin page for the ZRECommerce Storefront.
+	 	get_template_part('admin-plugin');
+	 }
 
- 	add_submenu_page(
- 		'zrecommerce', // Parent slug
- 		'ZRECommerce Storefront Dashboard - Services', // Page title
- 		'Services', // Menu title
- 		'read', // Capability
- 		'zrecommerce-services', // Menu slug
- 		'zrecommerce_admin_plugin_services' // Function
- 	);
+	 function zrecommerce_admin_plugin_api_settings() {
+	 	// @todo STUB: Output the ZRECommerce reports page.
+	 	get_template_part('admin-plugin-api-settings');
+	 }
 
+	 function zrecommerce_admin_plugin_orders() {
+	 	// @todo STUB: Output the ZRECommerce reports page.
+	 	get_template_part('admin-plugin-orders');
+	 }
 
- 	add_submenu_page(
- 		'zrecommerce', // Parent slug
- 		'ZRECommerce Storefront Dashboard - Subscriptions', // Page title
- 		'Subscriptions', // Menu title
- 		'read', // Capability
- 		'zrecommerce-subscriptions', // Menu slug
- 		'zrecommerce_admin_plugin_subscriptions' // Function
- 	);
+	 function zrecommerce_admin_plugin_products() {
+	 	// @todo STUB: Output the ZRECommerce reports page.
+	 	get_template_part('admin-plugin-products');
+	 }
 
- }
+	 function zrecommerce_admin_plugin_coupons() {
+	 	// @todo STUB: Output the ZRECommerce reports page.
+	 	get_template_part('admin-plugin-coupons');
+	 }
 
- // ---- System: Plugins ----
- function zrecommerce_admin_plugin() {
- 	// @todo STUB: Output the admin page for the ZRECommerce Storefront.
- 	get_template_part('admin-plugin');
- }
+	 function zrecommerce_admin_plugin_services() {
+	 	// @todo STUB: Output the ZRECommerce reports page.
+	 	get_template_part('admin-plugin-services');
+	 }
 
- function zrecommerce_admin_plugin_orders() {
- 	// @todo STUB: Output the ZRECommerce reports page.
- 	get_template_part('admin-plugin-orders');
- }
-
- function zrecommerce_admin_plugin_products() {
- 	// @todo STUB: Output the ZRECommerce reports page.
- 	get_template_part('admin-plugin-products');
- }
-
- function zrecommerce_admin_plugin_coupons() {
- 	// @todo STUB: Output the ZRECommerce reports page.
- 	get_template_part('admin-plugin-coupons');
- }
-
- function zrecommerce_admin_plugin_services() {
- 	// @todo STUB: Output the ZRECommerce reports page.
- 	get_template_part('admin-plugin-services');
- }
-
- function zrecommerce_admin_plugin_subscriptions() {
- 	// @todo STUB: Output the ZRECommerce reports page.
- 	get_template_part('admin-plugin-subscriptions');
- }
+	 function zrecommerce_admin_plugin_subscriptions() {
+	 	// @todo STUB: Output the ZRECommerce reports page.
+	 	get_template_part('admin-plugin-subscriptions');
+	 }
+	}
 
  // ---- System: Functions ----
 
