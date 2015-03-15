@@ -54,7 +54,7 @@
 
  function zrecommerce_enabled() {
  	// @todo STUB: wire up to save/load setting via admin
- 	return true;
+ 	return false;
  }
  function zrecommerce_config() {
  	// @todo STUB: save/load config via admin
