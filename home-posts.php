@@ -18,7 +18,7 @@
       	<p>
 	      	<?php echo $recentPost->post_excerpt; ?>
 
-	      	<a class="read-more" href="<?php echo get_permalink( 'post_author', $recentPost->ID ); ?>">Read</a>
+	      	<a class="read-more" href="<?php echo get_permalink( $recentPost->ID ); ?>">Read</a>
       	</p>
       	<hr>
       	<p class="author"><?php the_author_meta('user_nicename', $recentPost->post_author); ?></p>
