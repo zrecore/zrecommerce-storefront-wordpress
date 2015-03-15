@@ -16,9 +16,7 @@
 		<h2><?php echo apply_filters('the_title', $recentPost->post_title); ?></h2>
 		<p class="date"><?php echo get_the_date( null, $post_id) ?></p>
       	<p>
-	      	<?php echo $recentPost->post_excerpt; ?>
-
-	      	<a class="read-more" href="<?php echo get_permalink( $recentPost->ID ); ?>">Read</a>
+	      	<?php echo $recentPost->post_content; ?>
       	</p>
       	<hr>
       	<p class="author"><?php the_author_meta('user_nicename', $recentPost->post_author); ?></p>
