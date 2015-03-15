@@ -44,10 +44,64 @@
  	// 	'ZRECommerce Options',
  	// 	''
  	// );
+
+ 	add_menu_page(
+ 		'ZRECommerce Storefront Dashboard', // Page title
+ 		'Storefront', // Menu title
+ 		'read', // Capability
+ 		'zrecommerce', // Menu slug
+ 		'zrecommerce_admin_plugin', // Function
+ 		get_template_directory_uri() . '/assets/icons/logo-16x16.png', // Icon
+ 		0.99 // Load it near the top.
+ 	);
+
+ 	add_submenu_page(
+ 		'zrecommerce', // Parent slug
+ 		'ZRECommerce Storefront Dashboard - Reports', // Page title
+ 		'Reports', // Menu title
+ 		'read', // Capability
+ 		'zrecommerce-reports', // Menu slug
+ 		'zrecommerce_admin_plugin_reports' // Function
+ 	);
+
+ 	add_submenu_page(
+ 		'zrecommerce', // Parent slug
+ 		'ZRECommerce Storefront Dashboard - Orders', // Page title
+ 		'Orders', // Menu title
+ 		'read', // Capability
+ 		'zrecommerce-orders', // Menu slug
+ 		'zrecommerce_admin_plugin_orders' // Function
+ 	);
+
+ 	add_submenu_page(
+ 		'zrecommerce', // Parent slug
+ 		'ZRECommerce Storefront Dashboard - Services', // Page title
+ 		'Services', // Menu title
+ 		'read', // Capability
+ 		'zrecommerce-services', // Menu slug
+ 		'zrecommerce_admin_plugin_services' // Function
+ 	);
  }
 
- function zrecommerce_admin_menu_options() {
+ // ---- System: Plugins ----
+ function zrecommerce_admin_plugin() {
+ 	// @todo STUB: Output the admin page for the ZRECommerce Storefront.
+ 	get_template_part('admin-plugin');
+ }
 
+ function zrecommerce_admin_plugin_reports() {
+ 	// @todo STUB: Output the ZRECommerce reports page.
+ 	get_template_part('admin-plugin-reports');
+ }
+
+ function zrecommerce_admin_plugin_orders() {
+ 	// @todo STUB: Output the ZRECommerce reports page.
+ 	get_template_part('admin-plugin-orders');
+ }
+
+ function zrecommerce_admin_plugin_services() {
+ 	// @todo STUB: Output the ZRECommerce reports page.
+ 	get_template_part('admin-plugin-services');
  }
 
  // ---- System: Functions ----
