@@ -7,7 +7,7 @@
 	</h2>
 	<p class="date"><?php echo get_the_date( null, $post->ID) ?></p>
   	<p>
-      	<?php echo $post->post_content; ?>
+    <?php echo apply_filters('the_content', $post->post_content); ?>
   	</p>
   	<hr>
   	<p class="author"><?php the_author_meta('user_nicename', $post->post_author); ?></p>

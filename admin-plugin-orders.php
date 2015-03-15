@@ -48,6 +48,8 @@
 			<th id="id" class="manage-column" style="width: 20%; min-width: 200px;">ID</th>
 			<th id="order_details" class="manage-column">Order Details</th>
 		</tr>
+
+		<!-- If we have data, let's display it! -->
 		<?php if (!empty($orders->result)): ?>
 			<?php if (count($orders->data)): ?>
 				<?php foreach($orders->data as $record): ?>
@@ -71,11 +73,13 @@
 					</tr>
 				<?php endforeach; ?>
 			<?php else:?>
+			<!-- No data. -->
 			<tr>
 				<td colspan="2">(No records found.)</td>
 			</tr>
 			<?php endif; ?>
 		<?php else: ?>
+		<!-- It seems our REST service isn't available for some reason -->
 		<tr>
 			<td colspan="2">(Something went wrong!)</td>
 		</tr>
