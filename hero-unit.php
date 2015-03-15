@@ -18,7 +18,7 @@ if (!empty($mainArticle)):
             <h1><?php echo apply_filters('the_title', $post->post_title); ?></h1>
       		<p><?php echo apply_filters('the_excerpt', $post->post_excerpt); ?></p>   
         </div>
-        <a class="button" href="<?php get_permalink( $post->ID ); ?>">More</a>
+        <a class="button" href="<?php echo get_permalink( $post->ID ); ?>">More</a>
     </div>
 </div>
 <?php 
