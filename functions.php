@@ -31,7 +31,32 @@
 
  // ---- Admin: Config ----
  function zrecommerce_admin_install() {
- 	// @todo STUB: Admin menu(s) setup
+ 	// @todo STUB: Register settings.
+
+ 	// API_URL
+ 	register_setting(
+ 		'zrecommerce_api', // Option group
+ 		'url', // Option name
+ 		'esc_url'
+ 	);
+ 	// API_USER
+ 	register_setting(
+ 		'zrecommerce_api', // Option group
+ 		'user', // Option name
+ 		'sanitize_text_field'
+ 	);
+ 	// API_KEY
+ 	register_setting(
+ 		'zrecommerce_api', // Option group
+ 		'key', // Option name
+ 		'sanitize_text_field'
+ 	);
+ 	// API_VERSION
+ 	register_setting(
+ 		'zrecommerce_api', // Option group
+ 		'version', // Option name
+ 		'sanitize_text_field'
+ 	);
  }
 
  function zrecommerce_admin_uninstall() {
@@ -55,14 +80,6 @@
  		0.99 // Load it near the top.
  	);
 
- 	add_submenu_page(
- 		'zrecommerce', // Parent slug
- 		'ZRECommerce Storefront Dashboard - Reports', // Page title
- 		'Reports', // Menu title
- 		'read', // Capability
- 		'zrecommerce-reports', // Menu slug
- 		'zrecommerce_admin_plugin_reports' // Function
- 	);
 
  	add_submenu_page(
  		'zrecommerce', // Parent slug
@@ -75,12 +92,41 @@
 
  	add_submenu_page(
  		'zrecommerce', // Parent slug
+ 		'ZRECommerce Storefront Dashboard - Products', // Page title
+ 		'Products', // Menu title
+ 		'read', // Capability
+ 		'zrecommerce-products', // Menu slug
+ 		'zrecommerce_admin_plugin_products' // Function
+ 	);
+
+ 	add_submenu_page(
+ 		'zrecommerce', // Parent slug
+ 		'ZRECommerce Storefront Dashboard - Coupons', // Page title
+ 		'Coupons', // Menu title
+ 		'read', // Capability
+ 		'zrecommerce-coupons', // Menu slug
+ 		'zrecommerce_admin_plugin_coupons' // Function
+ 	);
+
+ 	add_submenu_page(
+ 		'zrecommerce', // Parent slug
  		'ZRECommerce Storefront Dashboard - Services', // Page title
  		'Services', // Menu title
  		'read', // Capability
  		'zrecommerce-services', // Menu slug
  		'zrecommerce_admin_plugin_services' // Function
  	);
+
+
+ 	add_submenu_page(
+ 		'zrecommerce', // Parent slug
+ 		'ZRECommerce Storefront Dashboard - Subscriptions', // Page title
+ 		'Subscriptions', // Menu title
+ 		'read', // Capability
+ 		'zrecommerce-subscriptions', // Menu slug
+ 		'zrecommerce_admin_plugin_subscriptions' // Function
+ 	);
+
  }
 
  // ---- System: Plugins ----
@@ -89,19 +135,29 @@
  	get_template_part('admin-plugin');
  }
 
- function zrecommerce_admin_plugin_reports() {
- 	// @todo STUB: Output the ZRECommerce reports page.
- 	get_template_part('admin-plugin-reports');
- }
-
  function zrecommerce_admin_plugin_orders() {
  	// @todo STUB: Output the ZRECommerce reports page.
  	get_template_part('admin-plugin-orders');
  }
 
+ function zrecommerce_admin_plugin_products() {
+ 	// @todo STUB: Output the ZRECommerce reports page.
+ 	get_template_part('admin-plugin-products');
+ }
+
+ function zrecommerce_admin_plugin_coupons() {
+ 	// @todo STUB: Output the ZRECommerce reports page.
+ 	get_template_part('admin-plugin-coupons');
+ }
+
  function zrecommerce_admin_plugin_services() {
  	// @todo STUB: Output the ZRECommerce reports page.
  	get_template_part('admin-plugin-services');
+ }
+
+ function zrecommerce_admin_plugin_subscriptions() {
+ 	// @todo STUB: Output the ZRECommerce reports page.
+ 	get_template_part('admin-plugin-subscriptions');
  }
 
  // ---- System: Functions ----
@@ -117,7 +173,7 @@
  add_action( 'init', 'register_menus' );
  add_action( 'wp_enqueue_scripts', 'register_js');
  add_theme_support( 'html5', array( 'search-form' ) );
-
+ add_action( 'admin_init', 'zrecommerce_admin_install' );
  add_action( 'admin_menu', 'zrecommerce_admin_menu' );
 
 ?>
