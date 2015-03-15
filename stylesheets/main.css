@@ -1103,7 +1103,7 @@ header.navigation {
           .hero .hero-inner .hero-copy p {
             font-size: 1.1em;
             max-width: 40%; } }
-    .hero .hero-inner button {
+    .hero .hero-inner button, .hero .hero-inner a {
       background-color: #335588;
       border-radius: 3px;
       border: 0;
@@ -1115,13 +1115,13 @@ header.navigation {
       text-decoration: none;
       background-clip: padding-box;
       padding: 0.7em 1em; }
-      .hero .hero-inner button:hover:not(:disabled) {
+      .hero .hero-inner button:hover:not(:disabled), .hero .hero-inner a:hover:not(:disabled) {
         background-color: #36609f;
         cursor: pointer; }
-      .hero .hero-inner button:active:not(:disabled), .hero .hero-inner button:focus:not(:disabled) {
+      .hero .hero-inner button:active:not(:disabled), .hero .hero-inner button:focus:not(:disabled), .hero .hero-inner a:active:not(:disabled), .hero .hero-inner a:focus:not(:disabled) {
         background-color: #2f4a72;
         cursor: pointer; }
-      .hero .hero-inner button:disabled {
+      .hero .hero-inner button:disabled, .hero .hero-inner a:disabled {
         cursor: not-allowed;
         opacity: 0.5; }
 
