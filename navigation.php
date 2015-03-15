@@ -1,7 +1,7 @@
 <header class="navigation" role="banner">
   <div class="navigation-wrapper">
     <a href="/" class="logo">
-      <img src="<?php echo get_template_directory_uri() . '/assets/icons/logo-android.png'; ?>" alt="Logo Image">
+      <img src="<?php echo get_template_directory_uri() . '/assets/icons/logo.png'; ?>" alt="Logo Image">
     </a>
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <nav role="navigation">
