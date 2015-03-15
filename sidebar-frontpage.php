@@ -18,7 +18,9 @@ if (!empty($featuredBullets)):
 ?>
   <li class="bullet three-col-bullet">
     <div class="bullet-icon bullet-icon-<?php echo $index ?>">
-      <img src="<?php echo esc_url(array_shift($pageMeta['bullet_icon_url'])) ?>" alt="">
+      <img src="<?php echo preg_match('/^http/', $pageMeta['bullet_icon_url']) ? 
+                        esc_url(array_shift($pageMeta['bullet_icon_url'])) : 
+                        get_template_directory_uri() . '/assets/icons/' . array_shift($pageMeta['bullet_icon_url']) ?>" alt="">
     </div>
     <div class="bullet-content">
       <h2><?php echo apply_filters('the_title', $page->post_title); ?></h2>

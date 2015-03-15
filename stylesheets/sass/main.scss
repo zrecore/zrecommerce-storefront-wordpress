@@ -1,8 +1,6 @@
 $max-width: 100%;
-@import "bourbon/bourbon";
-@import "neat/neat";
-@import "base/base";
 
+@import "variables";
 
 body {
     background: #fff;
@@ -20,6 +18,7 @@ div.main-container {
     div.body-container {
         @include span-columns(8);
         @include shift(2);
+        margin-top: 24px;
         .bullets {
   
 		///////////////////////////////////////////////////////////////////////////////////
@@ -100,6 +99,7 @@ div.main-container {
     }
 
 }
+
 @import "recentPosts";
 
 @import "navigation";
@@ -107,3 +107,22 @@ div.main-container {
 @import "comment";
 @import "flex-boxes";
 @import "footer";
+
+div.line-behind-text {
+	border-bottom: 1px solid #cacaca;
+	text-align: center;
+	margin-bottom: 4.5em;
+
+	h6 {
+	  background: #fff;
+	  color: #808080;
+	  display: inline-block;
+	  font-family: "Oswald", sans-serif;
+	  font-size: 1em;
+	  font-weight: 500;
+	  padding: 0 10px;
+	  position: relative;
+	  text-transform: uppercase;
+	  top: 34px;
+	}
+}

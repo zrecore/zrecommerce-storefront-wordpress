@@ -197,8 +197,8 @@ picture {
   max-width: 100%; }
 
 header.navigation {
-  background-color: #333;
-  border-bottom: 1px solid #1a1a1a;
+  background-color: rgba(30, 50, 80, 0.7);
+  border-bottom: 1px solid rgba(16, 27, 43, 0.7);
   min-height: 60px;
   width: 100%;
   z-index: 999; }
@@ -264,7 +264,7 @@ header.navigation {
         margin: 0;
         padding: 0; } }
   header.navigation ul li.nav-link {
-    background: #333;
+    background: rgba(30, 50, 80, 0.7);
     display: block;
     line-height: 60px;
     overflow: hidden;
@@ -358,13 +358,13 @@ header.navigation {
             border-bottom-right-radius: 3px;
             padding-bottom: 0.7em; } }
       header.navigation ul.submenu li a {
-        background-color: #2b2b2b;
+        background-color: rgba(26, 43, 69, 0.7);
         display: inline-block;
         text-align: right;
         width: 100%; }
         @media screen and (min-width: 53.75em) {
           header.navigation ul.submenu li a {
-            background-color: #333;
+            background-color: rgba(30, 50, 80, 0.7);
             padding-left: 1em;
             text-align: left;
             width: 12em; } }
@@ -380,8 +380,8 @@ header.navigation {
         background: transparent;
         clear: none;
         float: right; } }
-  header.navigation .sign-up {
-    background-color: #477DCA;
+  header.navigation .sign-in, header.navigation .register, header.navigation .view-cart {
+    background-color: #335588;
     border-radius: 3px;
     border: 0;
     color: white;
@@ -395,15 +395,16 @@ header.navigation {
     float: right;
     font-size: 0.8em;
     margin-top: 1em;
+    margin-right: 1em;
     padding: 0.75em 1em;
     text-transform: uppercase; }
-    header.navigation .sign-up:hover:not(:disabled) {
-      background-color: #578ad4;
+    header.navigation .sign-in:hover:not(:disabled), header.navigation .register:hover:not(:disabled), header.navigation .view-cart:hover:not(:disabled) {
+      background-color: #36609f;
       cursor: pointer; }
-    header.navigation .sign-up:active:not(:disabled), header.navigation .sign-up:focus:not(:disabled) {
-      background-color: #3c71bb;
+    header.navigation .sign-in:active:not(:disabled), header.navigation .sign-in:focus:not(:disabled), header.navigation .register:active:not(:disabled), header.navigation .register:focus:not(:disabled), header.navigation .view-cart:active:not(:disabled), header.navigation .view-cart:focus:not(:disabled) {
+      background-color: #2f4a72;
       cursor: pointer; }
-    header.navigation .sign-up:disabled {
+    header.navigation .sign-in:disabled, header.navigation .register:disabled, header.navigation .view-cart:disabled {
       cursor: not-allowed;
       opacity: 0.5; }
   header.navigation .search-bar {
@@ -416,9 +417,9 @@ header.navigation {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        background: #404040;
+        background: rgba(37, 62, 99, 0.7);
         border-radius: 6px;
-        border: 1px solid #262626;
+        border: 1px solid rgba(23, 39, 62, 0.7);
         color: rgba(255, 255, 255, 0.7);
         font-size: 0.9em;
         font-style: italic;
@@ -429,17 +430,7 @@ header.navigation {
           header.navigation .search-bar form input[type=search] {
             width: 100%; } }
       header.navigation .search-bar form button[type=submit] {
-        background-color: #404040;
-        border-radius: 3px;
-        border: 0;
-        color: white;
-        display: inline-block;
-        font-size: inherit;
-        font-weight: bold;
-        padding: 7px 18px;
-        text-decoration: none;
-        background-clip: padding-box;
-        background-color: #404040;
+        background-color: rgba(37, 62, 99, 0.7);
         border-radius: 3px;
         border: 0;
         color: white;
@@ -457,16 +448,10 @@ header.navigation {
         right: 0.3em;
         top: 0.3em; }
         header.navigation .search-bar form button[type=submit]:hover:not(:disabled) {
-          background-color: #4d4d4d;
+          background-color: rgba(41, 73, 121, 0.7);
           cursor: pointer; }
         header.navigation .search-bar form button[type=submit]:active:not(:disabled), header.navigation .search-bar form button[type=submit]:focus:not(:disabled) {
-          background-color: #333333;
-          cursor: pointer; }
-        header.navigation .search-bar form button[type=submit]:hover:not(:disabled) {
-          background-color: #504949;
-          cursor: pointer; }
-        header.navigation .search-bar form button[type=submit]:active:not(:disabled), header.navigation .search-bar form button[type=submit]:focus:not(:disabled) {
-          background-color: #333333;
+          background-color: rgba(32, 51, 78, 0.7);
           cursor: pointer; }
         header.navigation .search-bar form button[type=submit]:disabled {
           cursor: not-allowed;
