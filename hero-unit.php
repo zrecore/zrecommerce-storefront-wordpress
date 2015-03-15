@@ -12,6 +12,7 @@ if (!empty($mainArticle)):
     <div class="hero-inner">
         <img src="<?php echo get_template_directory_uri() . '/assets/icons/logo-smartphone.png'; ?>" alt="Responsive Design">
         <img src="<?php echo get_template_directory_uri() . '/assets/icons/logo-node.png'; ?>" alt="Node JS">
+        <img src="<?php echo get_template_directory_uri() . '/assets/icons/logo-arm.png'; ?>" alt="ARM Hardware">
         <img src="<?php echo get_template_directory_uri() . '/assets/icons/logo-php.png'; ?>" alt="PHP">
         <img src="<?php echo get_template_directory_uri() . '/assets/icons/logo-android.png'; ?>" alt="Android Development">
         <div class="hero-copy">
