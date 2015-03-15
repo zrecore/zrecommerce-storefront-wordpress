@@ -12,7 +12,6 @@
 	
 	<article class="type-system-sans recent-post">
 		
-		<p class="type"><?php echo get_the_date( null, $recentPost->ID) ?></p>
 		<h2><?php echo apply_filters('the_title', $recentPost->post_title); ?></h2>
 		<p class="date"><?php echo get_the_date( null, $recentPost->ID) ?></p>
       	<p>
